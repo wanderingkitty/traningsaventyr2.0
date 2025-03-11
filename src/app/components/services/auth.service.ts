@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:1408/api/users';
+  private apiUrl = '/api/users';
   public currentUserSubject = new BehaviorSubject<any>(null);
   currentUser$ = this.currentUserSubject.asObservable();
 
@@ -91,7 +91,7 @@ export class AuthService {
         // Выполняем HTTP-запрос напрямую
         this.http
           .put(
-            `http://localhost:1408/api/profiles/${userData.name}/characters/${character.name}`,
+            `/api/profiles/${userData.name}/characters/${character.name}`,
             {
               userId: userData.name,
               username: userData.name,
