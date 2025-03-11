@@ -1,0 +1,93 @@
+<div class="character-creation-container">
+  <button class="goBack-btn" (click)="onMainScreen()">Go back</button>
+
+  <div class="hero">
+    <h1>Character Creation</h1>
+    <h2>Choose Your Path</h2>
+    <p class="intro">
+      Select the character class that resonates with your fitness goals and
+      personal style. Each class offers unique abilities and challenges that
+      will shape your fitness adventure.
+    </p>
+  </div>
+
+  <div class="preview-section" *ngIf="selectedCharacter">
+    <div class="character-preview">
+      <h2>{{ selectedCharacter.name }}</h2>
+      <img
+        [src]="selectedCharacter.avatar"
+        alt="Character Avatar"
+        class="character-avatar"
+      />
+
+      <div class="character-details">
+        <div class="special-abilities-section">
+          <h3>Special Abilities:</h3>
+          <ul class="abilities-list">
+            <li *ngFor="let ability of selectedCharacter.specialAbilities">
+              {{ ability.name }}
+              <span class="unlock-level"
+                >(Unlocks at Level {{ ability.unlockedAtLevel }})</span
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="challenges-section">
+          <h3>Challenges:</h3>
+          <ul class="challenges-list">
+            <li
+              *ngFor="let challenge of selectedCharacter.challenges.slice(0, 3)"
+            >
+              <p>{{ challenge.name }}:</p>
+
+              {{ challenge.description }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="class-selection-title">Choose your class</h2>
+
+  <div class="class-selection">
+    <div class="class-cards">
+      <div
+        *ngFor="let character of characters"
+        class="class-card"
+        [class.selected]="character === selectedCharacter"
+        (click)="selectCharacter(character)"
+      >
+        <img
+          [src]="character.avatar"
+          alt="{{ character.name }}"
+          class="card-image"
+        />
+        <div class="card-content">
+          <h3>{{ character.name }}</h3>
+          <p *ngIf="character.name === 'Runner'">
+            Master endurance, speed, and the power of consistent progress.
+          </p>
+          <p *ngIf="character.name === 'Ascender'">
+            Conquer heights with strength, determination, and strategic
+            thinking.
+          </p>
+          <p *ngIf="character.name === 'Zen Warrior'">
+            Find balance through mindfulness, flexibility, and inner strength.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="action-section">
+    <button
+      class="continue-button"
+      (click)="continue()"
+      [disabled]="!selectedCharacter"
+    >
+      Continue Your Journey
+    </button>
+  </div>
+</div>

@@ -1,0 +1,343 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+.main-section {
+  background: linear-gradient(180deg, #ff944d 0%, #d16a7a 50%, #852d3c 100%);
+  min-height: 150vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  padding: 2rem;
+  font-family: "Fira Sans", serif;
+  font-weight: 700;
+  font-style: normal;
+  position: relative;
+  overflow: hidden;
+}
+
+.main-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 200, 100, 0.4) 0%,
+    transparent 70%
+  );
+  z-index: 0;
+}
+
+.title {
+  position: absolute;
+  top: 40vh;
+  width: 100%;
+  color: #ffe068;
+  text-align: center;
+  will-change: transform, opacity;
+  transition: opacity 0.3s;
+  z-index: 10;
+
+  h1 {
+    font-size: 7em;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 15px rgba(255, 224, 104, 0.8),
+      0 0 30px rgba(255, 150, 50, 0.6), 0 0 45px rgba(133, 45, 60, 0.4);
+  }
+
+  p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    font-family: "Fira Sans", serif;
+    font-weight: 300;
+  }
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &.btn-primary {
+    background-color: #251d2a;
+    border: none;
+    color: white;
+
+    &:hover {
+      background: linear-gradient(135deg, #2d1f3b, #48325f);
+      border-color: rgba(180, 140, 255, 0.3);
+      transform: translateY(-2px) scale(1.02);
+    }
+  }
+
+  &.btn-secondary {
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+}
+
+.content {
+  position: absolute;
+  top: 120vh; // Расположим под горами
+  width: 100%;
+  color: white;
+  text-align: center;
+  z-index: 1; // Между горами и деревьями
+  will-change: transform, opacity;
+  transition: transform 0.4s ease-out, opacity 0.5s ease-out;
+  padding: 2rem;
+  gap: 20px;
+
+  &.hidden {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+
+  &.visible {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  h2 {
+    font-weight: 900;
+    font-size: 2em;
+  }
+}
+
+.content button {
+  margin-top: 1em;
+}
+.cards {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 2rem;
+
+  .card {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 1rem;
+    width: 250px;
+    text-align: center;
+    backdrop-filter: blur(5px);
+  }
+}
+
+.card img {
+  width: 140px;
+  height: 140px;
+  margin: 10px auto;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+.trees {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  pointer-events: none;
+  will-change: transform, opacity;
+  transition: opacity 0.3s;
+}
+.mountains {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: cover;
+  transition: transform 0.3s ease-out;
+}
+
+.mountains-front {
+  bottom: 0;
+  z-index: 6;
+}
+
+.mountains-back {
+  bottom: 10vh;
+  height: 35vh;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 300'%3E%3Cpath d='M0,300 L0,180 L100,220 L200,150 L300,200 L400,130 L500,190 L600,140 L700,210 L800,160 L900,220 L1000,150 L1100,190 L1200,130 L1200,300 Z' fill='%23421321'/%3E%3C/svg%3E");
+  z-index: 3;
+}
+
+.mountains-mid {
+  bottom: 5vh;
+  height: 40vh;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 300'%3E%3Cpath d='M0,300 L0,170 L150,230 L250,150 L350,210 L450,120 L550,200 L650,130 L750,220 L850,140 L950,210 L1050,140 L1150,220 L1200,180 L1200,300 Z'a fill='%23321018'/%3E%3C/svg%3E");
+  z-index: 4;
+}
+
+.mountains-front {
+  bottom: 0;
+  height: 45vh;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 300'%3E%3Cpath d='M0,300 L0,160 L120,240 L220,140 L320,230 L420,130 L520,220 L620,120 L720,240 L820,130 L920,230 L1020,140 L1120,240 L1200,170 L1200,300 Z' fill='%23220a10'/%3E%3C/svg%3E");
+  z-index: 6;
+}
+
+.about-section {
+  background-color: #220a10;
+  min-height: 100vh;
+  position: relative;
+  z-index: 10;
+  font-family: "Fira Sans", serif;
+  margin-top: -5vh;
+}
+
+.about-section .about {
+  color: white;
+  padding: 2rem;
+  text-align: center;
+  text-shadow: 0 0 15px rgba(255, 224, 104, 0.3);
+}
+.about-section .about h1 {
+  font-size: 4em;
+  margin-bottom: 1em;
+  margin-top: 10vh;
+}
+
+.about-section .sky-background {
+  display: none;
+}
+
+.about-mountain {
+  position: relative;
+  bottom: 40vh;
+  height: 40vh;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 300'%3E%3Cpath d='M0,300 L0,160 L120,240 L220,140 L320,230 L420,130 L520,220 L620,120 L720,240 L820,130 L920,230 L1020,140 L1120,240 L1200,170 L1200,300 Z' fill='%23220a10'/%3E%3C/svg%3E");
+  z-index: 11;
+}
+.description {
+  display: flex;
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: left;
+  color: #ffc46c;
+}
+
+.description-column {
+  flex: 1;
+}
+
+.description p {
+  font-size: 1.2em;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.intro-text,
+.outro-text {
+  font-weight: 700;
+  font-size: 1.4em;
+  color: #ffe068;
+}
+
+.cta-container {
+  margin-top: 3rem;
+}
+
+.cta-button {
+  background-color: #ffa94d;
+  color: #220a10;
+  padding: 1rem 2rem;
+  font-size: 1.2em;
+  font-weight: 700;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #ffe068;
+  transform: translateY(-2px);
+}
+
+.navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 3rem 0;
+}
+
+.nav-button {
+  background-color: #852d3c;
+  color: #ffe068;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  text-align: center;
+  width: 45%;
+  text-transform: uppercase;
+  font-weight: 700;
+  border: none;
+  transition: background-color 0.3s;
+}
+
+.nav-button:hover {
+  background-color: #9a3547;
+}
+
+.sky-background {
+  position: fixed;
+  filter: contrast(200%) brightness(130%) opacity(60%);
+  transition: transform 0.3s ease-out;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none; // Важно: делает фон "прозрачным" для взаимодействий
+  background: linear-gradient(
+    180deg,
+    rgba(102, 51, 153, 1) 0%,
+    rgba(51, 26, 77, 1) 50%,
+    rgba(25, 10, 38, 1) 100%
+  );
+
+  // Добавьте clip-path для ограничения видимости
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+  .stars {
+    fill: rgba(255, 255, 255, 1); // Максимальная белизна
+  }
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}

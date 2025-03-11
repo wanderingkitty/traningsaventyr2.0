@@ -1,0 +1,123 @@
+<div class="workout-table">
+  <!-- Уведомление для отображения заработанного XP -->
+  <div *ngIf="notification.show" class="notification">
+    {{ notification.message }}
+  </div>
+
+  <div class="headers">
+    <h1 class="workout-title">Workout time:</h1>
+    <h1>{{ formatTime(currentTime) }}</h1>
+    <div class="buttons">
+      <button class="workout-btn" [disabled]="isRunning" (click)="startTimer()">
+        Start
+      </button>
+      <button
+        class="workout-btn"
+        [disabled]="!isRunning"
+        (click)="pauseTimer()"
+      >
+        PAUSE
+      </button>
+      <button class="workout-btn" (click)="completeWorkout()">
+        Complete workout
+      </button>
+    </div>
+  </div>
+
+  <h2>Today's workout</h2>
+  <span class="workout-description">
+    Test your skills with different climbing puzzles. No pressure - try what
+    feels right for you!
+  </span>
+
+  <div class="workout-challanges">
+    <div *ngFor="let exercise of workouts[0].exercises">
+      <div
+        class="exercises-list"
+        [class.completed]="completedExercises[exercise.name]"
+        (click)="completeExercise(exercise, $event)"
+      >
+        <h2>{{ exercise.name }}</h2>
+        <span> {{ exercise.description }}</span>
+        <span> {{ exercise.xpReward }}</span>
+        <div class="exercise-status" *ngIf="isRunning">
+          <span *ngIf="!completedExercises[exercise.name]" class="click-hint"
+            >Click to complete</span
+          >
+          <span
+            *ngIf="completedExercises[exercise.name]"
+            class="completed-check"
+            >✓ Completed</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3>Challenges</h3>
+  <div class="workout-challanges">
+    <div *ngFor="let challenge of workouts[0].challenges">
+      <div
+        class="exercises-list"
+        [class.completed]="completedChallenges[challenge.name]"
+        (click)="completeChallenge(challenge, $event)"
+      >
+        <h2>{{ challenge.name }}</h2>
+        <span class="workout-description">
+          {{ challenge.description }}
+        </span>
+        <span> Challenge reward + {{ challenge.xpReward }} XP </span>
+
+        <span> Current progress: {{ challenge.progress }} </span>
+        <div class="exercise-status" *ngIf="isRunning">
+          <span *ngIf="!completedChallenges[challenge.name]" class="click-hint"
+            >Click to complete</span
+          >
+          <span
+            *ngIf="completedChallenges[challenge.name]"
+            class="completed-check"
+            >✓ Completed</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="achievements-challanges">
+    <h3>Achievement focus</h3>
+    <div class="workout-challanges">
+      <div *ngFor="let achievement of workouts[0].achievements">
+        <div
+          class="exercises-list"
+          [class.completed]="completedAchievements[achievement.name]"
+          (click)="completeAchievement(achievement, $event)"
+        >
+          <h2>{{ achievement.name }}</h2>
+          <span class="workout-description">
+            {{ achievement.description }}
+          </span>
+          <span> {{ achievement.progressDescription }} </span>
+          <span> Current progress: {{ achievement.progress }} </span>
+          <div class="exercise-status" *ngIf="isRunning">
+            <span
+              *ngIf="!completedAchievements[achievement.name]"
+              class="click-hint"
+              >Click to complete</span
+            >
+            <span
+              *ngIf="completedAchievements[achievement.name]"
+              class="completed-check"
+              >✓ Completed</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="progress-info">
+        <h2>Progress</h2>
+        <div class="progress">Achievement completed: {{ routesCompleted }}</div>
+        <div class="progress">Total XP gained: {{ totalXpGained }}</div>
+      </div>
+    </div>
+  </div>
+</div>

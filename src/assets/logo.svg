@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+  <!-- Gradient Background -->
+  <defs>
+    <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3494E6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#EC6EAD;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background Circle -->
+  <circle cx="150" cy="150" r="140" fill="url(#progressGradient)"/>
+
+  <!-- Abstract Ascending Figure -->
+  <g transform="translate(50, 50) scale(0.7)">
+    <!-- Stylized Body Segments -->
+    <path 
+      d="M150 200 
+         Q180 150, 200 100 
+         T250 50" 
+      fill="none" 
+      stroke="white" 
+      stroke-width="15" 
+      stroke-linecap="round"
+    />
+
+    <!-- Dynamic Connecting Lines -->
+    <path 
+      d="M150 200 
+         Q120 150, 100 100 
+         T50 50" 
+      fill="none" 
+      stroke="white" 
+      stroke-width="15" 
+      stroke-linecap="round"
+    />
+
+    <!-- Central Progression Point -->
+    <circle cx="150" cy="125" r="20" fill="white"/>
+  </g>
+</svg>

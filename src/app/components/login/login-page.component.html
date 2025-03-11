@@ -1,0 +1,31 @@
+<div class="login-table">
+  <div class="background-shapes">
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+  </div>
+
+  <button class="goBack-btn" (click)="onMainScreen()">Go back</button>
+  <div class="login-block">
+    <h1>LOGIN</h1>
+    <input
+      type="text"
+      name="username"
+      placeholder="Username"
+      required
+      [(ngModel)]="username"
+    />
+
+    <input
+      type="password"
+      name="password"
+      placeholder="Password"
+      required
+      [(ngModel)]="password"
+    />
+
+    <button class="sign-in" (click)="onLogin()">LOGIN</button>
+    <span>Don't have an account? Sign up here</span>
+    <button class="sign-in" (click)="onSignin()">SIGN UP</button>
+  </div>
+</div>

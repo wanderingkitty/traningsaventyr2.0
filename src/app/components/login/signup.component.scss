@@ -1,0 +1,410 @@
+.signup-table {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(135deg, #251d2a, #473950); // Dark purple gradient
+  font-family: "Fira Sans", serif;
+  overflow: hidden; // Чтобы фигуры не выходили за пределы контейнера
+}
+
+.signup-container {
+  margin: 0 auto;
+  padding: 30px;
+  width: 400px;
+  max-width: 90%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(180, 140, 255, 0.2);
+  backdrop-filter: blur(5px); // Добавляем эффект размытия для фона
+  animation: fadeIn 0.5s ease-out;
+}
+
+h2 {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 2.2rem;
+  margin-bottom: 1.2rem;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #5a3f76, rgba(180, 140, 255, 0.5));
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 3px;
+  }
+}
+
+span {
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 400;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(180, 140, 255, 0.3), transparent);
+    transition: width 0.3s ease;
+  }
+
+  &:focus-within::after {
+    width: 100%;
+  }
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 10px 0;
+  border-radius: 6px;
+  border: 1px solid rgba(180, 140, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.9);
+  outline: none;
+  font-family: "Fira Sans", serif;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+
+  &:focus {
+    border-color: rgba(180, 140, 255, 0.8);
+    box-shadow: 0 0 8px rgba(180, 140, 255, 0.4);
+  }
+}
+
+.hint {
+  display: block;
+  font-size: 0.8rem;
+  margin-top: 5px;
+  color: rgba(255, 255, 255, 0.6);
+  font-style: italic;
+  padding-left: 5px;
+  position: relative;
+
+  &::before {
+    content: "ℹ️";
+    margin-right: 5px;
+    font-size: 0.7rem;
+  }
+}
+
+button[type="submit"] {
+  background: linear-gradient(135deg, #3b2b4e, #5a3f76);
+  color: #e0d6f5;
+  font-weight: 600;
+  border: 2px solid rgba(180, 140, 255, 0.5);
+  border-radius: 10px;
+  width: 100%;
+  padding: 12px;
+  margin: 20px 0 15px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 0px 10px rgba(100, 80, 150, 0.3);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
+    transition: left 0.5s ease;
+  }
+
+  &:hover:not(:disabled) {
+    background: linear-gradient(135deg, #2f213b, #4a3560);
+    border-color: rgba(180, 140, 255, 0.7);
+    transform: scale(1.03);
+    box-shadow: 0px 0px 15px rgba(120, 100, 180, 0.4);
+
+    &::before {
+      left: 100%;
+    }
+  }
+
+  &:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+
+  &:disabled {
+    background: linear-gradient(135deg, #2d2435, #3d3245);
+    border-color: rgba(180, 140, 255, 0.2);
+    color: rgba(255, 255, 255, 0.4);
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+}
+
+.error-message {
+  color: #ff6b6b;
+  margin: 10px 0;
+  font-size: 0.9rem;
+  background-color: rgba(255, 107, 107, 0.1);
+  padding: 8px 12px;
+  border-radius: 4px;
+  border-left: 3px solid #ff6b6b;
+  text-align: left;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  animation: shake 0.5s ease-in-out;
+}
+
+.login-link {
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 20px;
+  font-size: 0.95rem;
+  padding-top: 10px;
+  border-top: 1px solid rgba(180, 140, 255, 0.2);
+
+  a {
+    color: rgba(180, 140, 255, 0.9);
+    text-decoration: none;
+    margin-left: 5px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: rgba(220, 200, 255, 1);
+      transition: width 0.3s ease;
+    }
+
+    &:hover {
+      color: rgba(220, 200, 255, 1);
+
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.goBack-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: rgba(0, 0, 0, 0.3);
+  color: #e0d6f5;
+  border: 1px solid rgba(180, 140, 255, 0.3);
+  border-radius: 8px;
+  padding: 8px 15px;
+  font-family: "Fira Sans", serif;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 1;
+
+  &:hover {
+    background: rgba(90, 63, 118, 0.4);
+    border-color: rgba(180, 140, 255, 0.5);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+/* Фоновые фигуры с анимацией */
+.background-shapes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+
+  .shape {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(180, 140, 255, 0.1);
+    filter: blur(2px);
+    animation: floatAnimation 20s infinite ease-in-out;
+
+    &:nth-child(1) {
+      width: 350px;
+      height: 350px;
+      top: 10%;
+      left: 15%;
+      background: radial-gradient(
+        circle at 30% 40%,
+        rgba(180, 140, 255, 0.15),
+        rgba(90, 63, 118, 0.05)
+      );
+      animation-duration: 28s;
+      animation-delay: -3s;
+    }
+
+    &:nth-child(2) {
+      width: 450px;
+      height: 450px;
+      bottom: 5%;
+      right: 10%;
+      background: radial-gradient(
+        circle at 70% 60%,
+        rgba(200, 150, 255, 0.12),
+        rgba(110, 83, 138, 0.04)
+      );
+      animation-duration: 35s;
+      animation-delay: -12s;
+    }
+
+    &:nth-child(3) {
+      width: 250px;
+      height: 250px;
+      top: 60%;
+      left: 25%;
+      background: radial-gradient(
+        circle at 40% 50%,
+        rgba(160, 120, 235, 0.15),
+        rgba(70, 43, 98, 0.05)
+      );
+      animation-duration: 25s;
+      animation-delay: -8s;
+    }
+  }
+}
+
+/* Анимация плавного появления формы */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -55%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Анимация плавающих фоновых фигур */
+@keyframes floatAnimation {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(2%, 2%) rotate(3deg);
+  }
+  50% {
+    transform: translate(0, 4%) rotate(0deg);
+  }
+  75% {
+    transform: translate(-2%, 2%) rotate(-3deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+/* Анимация встряхивания для сообщений об ошибке */
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-5px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(5px);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .signup-container {
+    padding: 20px;
+    width: 85%;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  .background-shapes .shape {
+    opacity: 0.5; // Уменьшаем непрозрачность на мобильных устройствах
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .signup-container {
+    padding: 15px;
+    width: 95%;
+  }
+
+  .form-group input {
+    padding: 10px;
+    margin: 8px 0;
+  }
+
+  button[type="submit"] {
+    padding: 10px;
+    font-size: 1rem;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  .goBack-btn {
+    top: 10px;
+    left: 10px;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+
+  .login-link {
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-height: 500px) {
+  .signup-container {
+    position: relative;
+    transform: none;
+    top: 20px;
+    left: 0;
+    margin: 20px auto;
+  }
+}
