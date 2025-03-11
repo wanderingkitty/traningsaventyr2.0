@@ -2,9 +2,9 @@
   "name": "traningsaventyr",
   "version": "0.0.0",
   "scripts": {
-    "start": "ng serve",
+    "start": "node dist/backend/api-server.js",
     "start:backend": "ts-node -P tsconfig.backend.json backend/api-server.ts",
-    "build": "ng build",
+    "build": "ng build && npm run build:backend",
     "build:backend": "tsc -p tsconfig.backend.json",
     "watch": "ng build --watch --configuration development"
   },
