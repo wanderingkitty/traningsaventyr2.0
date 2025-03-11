@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { CharacterService } from '../services/character.service';
 import { Observable, Subscription } from 'rxjs';
-import { User } from 'backend/models/user';
-import { Character, CharacterProfile } from 'backend/models/character';
+import { Character, CharacterProfile } from '../models/character.model';
+import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-character-profile',
