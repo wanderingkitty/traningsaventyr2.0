@@ -24,7 +24,7 @@
         Level {{ characterProfile.progress.level || 1 }}
         {{ characterProfile.characterData.class || "" }}
       </p>
-      <div class="level-badge">{{ characterProfile.progress?.level || 1 }}</div>
+      <div class="level-badge">{{ characterProfile.progress.level || 1 }}</div>
     </div>
 
     <div class="xp-container">
@@ -32,7 +32,7 @@
         <div
           class="progress-bar-inner"
           [style.width.%]="
-            ((characterProfile.progress?.experience || 0) /
+            ((characterProfile.progress.experience || 0) /
               (characterProfile.progress.experienceToNextLevel || 1000)) *
             100
           "
