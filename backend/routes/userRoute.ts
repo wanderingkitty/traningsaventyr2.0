@@ -1,9 +1,9 @@
 import express from 'express';
 import { getDb, connect } from '../data/dbConnection';
 import { Collection, ObjectId } from 'mongodb';
-import { User } from '../models/user.js';
 import { validateLogin } from '../data/validation/validateLogin';
 import { generateToken } from '../data/authMiddleware';
+import { User } from '../models/User';
 
 const userRouter = express.Router();
 

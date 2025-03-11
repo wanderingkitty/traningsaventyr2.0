@@ -1,4 +1,4 @@
-import { User } from 'backend/models/user';
+import { User } from '../../models/User';
 import { Collection } from 'mongodb';
 
 export type UserId = string;

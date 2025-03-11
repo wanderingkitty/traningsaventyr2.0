@@ -1,8 +1,5 @@
 import express from 'express';
-import { getDb, connect } from '../data/dbConnection';
-import { Collection } from 'mongodb';
-import { User } from '../models/user.js';
-import { CharacterProfile } from '../models/character';
+import { getDb } from '../data/dbConnection';
 
 const profileRouter = express.Router();
 
