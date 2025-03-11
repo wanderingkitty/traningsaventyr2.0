@@ -1,5 +1,5 @@
+import { User } from 'backend/models/user';
 import { Collection } from 'mongodb';
-import { User } from '../../models/user';
 
 export type UserId = string;
 
