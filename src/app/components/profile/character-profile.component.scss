@@ -443,6 +443,10 @@ h3 {
     grid-template-columns: 1fr;
   }
 
+  .character-card {
+    max-height: 440px;
+  }
+
   .action-buttons {
     flex-direction: column;
   }

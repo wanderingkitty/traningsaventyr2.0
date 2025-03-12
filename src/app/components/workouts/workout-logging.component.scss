@@ -550,6 +550,10 @@ h2 {
     font-size: 1.8rem;
   }
 
+  h2 {
+    margin-top: 8em;
+  }
+
   .workout-description {
     font-size: 1rem;
   }
@@ -557,6 +561,7 @@ h2 {
   .exercises-list {
     padding: 15px;
     min-height: 90px;
+    bottom: 10em;
   }
 
   .exercises-list h2 {
@@ -564,14 +569,20 @@ h2 {
   }
 
   .buttons {
-    flex-direction: column;
-    padding: 15px 10px;
+    flex-direction: row; /* Кнопки в ряд */
+    flex-wrap: wrap; /* Позволяет переносить на новую строку */
+    gap: 10px;
+    margin-bottom: 140px; /* Отступ от нижнего fixed элемента */
   }
 
   .workout-btn {
-    width: 100%;
-    padding: 12px 20px;
-    font-size: 1em;
+    flex: 1; /* Равномерно распределяем доступное пространство */
+    min-width: 0; /* Убираем ограничение минимальной ширины */
+    max-width: calc(
+      33% - 10px
+    ); /* Максимально занимает треть доступного места */
+    padding: 8px 12px;
+    font-size: 0.9em;
   }
 }
 
@@ -606,24 +617,8 @@ h2 {
     padding: 10px 15px;
     font-size: 0.9rem;
   }
-}
-
-@media (max-width: 768px) {
-  .buttons {
-    flex-direction: row; /* Кнопки в ряд */
-    flex-wrap: wrap; /* Позволяет переносить на новую строку */
-    gap: 10px;
-    margin-bottom: 140px; /* Отступ от нижнего fixed элемента */
-  }
-
-  .workout-btn {
-    flex: 1; /* Равномерно распределяем доступное пространство */
-    min-width: 0; /* Убираем ограничение минимальной ширины */
-    max-width: calc(
-      33% - 10px
-    ); /* Максимально занимает треть доступного места */
-    padding: 8px 12px;
-    font-size: 0.9em;
+  .progress {
+    padding: 2px;
   }
 }
 

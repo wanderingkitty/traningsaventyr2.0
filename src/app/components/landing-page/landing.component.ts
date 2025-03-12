@@ -60,16 +60,42 @@ export class LandingComponent implements OnInit {
         title.style.marginTop = -scrollTop * 0.5 + 'px';
       }
 
-      let transformValue = -scrollTop * 1.3;
+      // Возвращаем более быстрое движение контента, как в оригинале
+      // но все же немного медленнее
+      let transformValue = -scrollTop * 1.0; // Было 1.3, затем 0.8, делаем 1.0
 
       if (scrollTop > pageMiddle) {
         const scrollBeyondMiddle = scrollTop - pageMiddle;
-        transformValue = -pageMiddle * 1.4 + scrollBeyondMiddle * 0.7;
+        transformValue = -pageMiddle * 1.0 + scrollBeyondMiddle * 0.6;
+      }
+
+      // Проверяем размер экрана и немного корректируем на мобильных устройствах
+      const screenWidth = window.innerWidth;
+      if (screenWidth <= 768) {
+        transformValue = Math.max(transformValue, -windowHeight * 1.2); // Ограничиваем максимальное смещение
       }
 
       content.style.transform = `translateY(${transformValue}px)`;
     } else {
       console.warn('Title or content element not found!');
+    }
+
+    // Обработка гор для правильного параллакса
+    const mountainsBack = document.querySelector(
+      '.mountains-back'
+    ) as HTMLElement;
+    const mountainsMid = document.querySelector(
+      '.mountains-mid'
+    ) as HTMLElement;
+    const mountainsFront = document.querySelector(
+      '.mountains-front'
+    ) as HTMLElement;
+
+    if (mountainsBack && mountainsMid && mountainsFront) {
+      // Горы двигаются немного быстрее при прокрутке
+      mountainsBack.style.transform = `translateY(${scrollTop * 0.1}px)`;
+      mountainsMid.style.transform = `translateY(${scrollTop * 0.15}px)`;
+      mountainsFront.style.transform = `translateY(${scrollTop * 0.2}px)`;
     }
 
     const trees = document.querySelector('.trees') as HTMLElement;
@@ -84,10 +110,49 @@ export class LandingComponent implements OnInit {
 
       const treeScale = startScale - (startScale - endScale) * treeProgress;
 
-      const initialTreeOffset = 30;
-      const treeY = initialTreeOffset * (1 - treeProgress);
+      // Адаптивное начальное смещение в зависимости от устройства
+      const screenWidth = window.innerWidth;
+      const screenHeight = window.innerHeight;
 
-      trees.style.transform = `scale(${treeScale}) translateY(${treeY}px)`;
+      // Базовые настройки для разных размеров экрана
+      let baseOffset;
+      let treeScaleFactor = treeScale;
+
+      if (screenWidth <= 480) {
+        // Мобильные устройства
+        baseOffset = 0;
+        treeScaleFactor = 1.0;
+      } else if (screenWidth <= 768) {
+        // Планшеты
+        baseOffset = 0;
+        treeScaleFactor = 1.1;
+      } else if (screenHeight < 600) {
+        // Очень низкие экраны
+        baseOffset = -50;
+      } else if (screenHeight < 800) {
+        // Средние экраны
+        baseOffset = -100;
+      } else {
+        // Большие экраны
+        baseOffset = -150;
+      }
+
+      // Деревья двигаются вниз при прокрутке с немного увеличенной скоростью
+      let treeY = baseOffset;
+      if (scrollTop > 0) {
+        treeY = baseOffset + scrollTop * 0.35; // Увеличиваем с 0.3 до 0.35
+      }
+
+      trees.style.cssText = `
+        opacity: 1;
+        transform: scale(${treeScaleFactor}) translateY(${treeY}px);
+        z-index: 7; 
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        pointer-events: none;
+      `;
     }
   }
 
