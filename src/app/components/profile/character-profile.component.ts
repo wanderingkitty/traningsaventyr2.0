@@ -3,7 +3,7 @@ import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { CharacterService } from '../services/character.service';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Subscription, map } from 'rxjs';
 import { Character, CharacterProfile } from '../models/character.model';
 import { User } from '../models/user.model';
 
@@ -18,6 +18,7 @@ export class CharacterProfileComponent implements OnInit, OnDestroy {
   character?: Character;
   characterProfile?: CharacterProfile;
   user$: Observable<User>;
+  userName: string = '';
   progressSubscription: Subscription = new Subscription();
   Math = Math;
 
@@ -40,6 +41,9 @@ export class CharacterProfileComponent implements OnInit, OnDestroy {
     window.scrollTo(0, 0);
     console.log('Character profile component initialized');
 
+    this.user$.pipe(map((user) => user.name)).subscribe((name) => {
+      this.userName = name;
+    });
     // Загрузка персонажа из localStorage (если не был передан через навигацию)
     this.loadCharacterFromStorage();
 
@@ -70,9 +74,6 @@ export class CharacterProfileComponent implements OnInit, OnDestroy {
               this.characterProfile.characterData.xpToNextLevel =
                 progress.experienceToNextLevel;
             }
-
-            // ВАЖНО: Обновляем специальные способности при изменении уровня
-            this.updateSpecialAbilities();
 
             console.log(
               'Updated character profile for',
@@ -198,9 +199,6 @@ export class CharacterProfileComponent implements OnInit, OnDestroy {
           console.warn('No profile data received from server');
           return;
         }
-        if (this.character) {
-          this.updateSpecialAbilities();
-        }
 
         if (profile.characterData.name !== this.character?.name) {
           console.warn(
@@ -278,65 +276,6 @@ export class CharacterProfileComponent implements OnInit, OnDestroy {
         console.error('Error loading user profile:', error);
       },
     });
-  }
-
-  updateSpecialAbilities() {
-    if (this.character?.specialAbilities) {
-      // Simply map the abilities based on current level
-      this.character.specialAbilities = this.character.specialAbilities.map(
-        (ability) => ({
-          ...ability,
-          // Use the level from characterProfile to ensure consistency
-          unlocked:
-            (this.characterProfile?.progress?.level ?? 1) >=
-            (ability.requiredLevel ?? ability.unlockedAtLevel ?? Infinity),
-        })
-      );
-
-      // Optional: Save the updated character
-      this.characterService.saveCharacter(this.character);
-    }
-  }
-
-  checkAndUpdateAbilities() {
-    if (this.character) {
-      // Ensure abilities are updated when level changes
-      this.updateSpecialAbilities();
-
-      // Log for debugging
-      console.log(
-        'Abilities after update:',
-        this.character.specialAbilities.map(
-          (a) => `${a.name}: ${a.unlocked ? 'Unlocked' : 'Locked'}`
-        )
-      );
-    }
-  }
-
-  // Method to get next unlockable ability
-  getNextAbilityDescription(): string | null {
-    if (!this.character?.specialAbilities?.length) return null;
-
-    const nextAbility = this.character.specialAbilities.find(
-      (ability) =>
-        !ability.unlocked &&
-        (this.character?.level ?? 1) >=
-          (ability.requiredLevel ?? ability.unlockedAtLevel ?? Infinity)
-    );
-
-    return nextAbility
-      ? `Next ability '${nextAbility.name}' unlocks at level ${
-          nextAbility.requiredLevel ?? nextAbility.unlockedAtLevel
-        }`
-      : null;
-  }
-
-  // Method to get unlocked abilities
-  getUnlockedAbilities() {
-    return (
-      this.character?.specialAbilities?.filter((ability) => ability.unlocked) ??
-      []
-    );
   }
 
   // Метод для нормализации достижений
@@ -420,10 +359,6 @@ export class CharacterProfileComponent implements OnInit, OnDestroy {
 
     if (!this.character.challenges) {
       this.character.challenges = [];
-    }
-
-    if (!this.character.specialAbilities) {
-      this.character.specialAbilities = [];
     }
 
     // Initialize stats if not defined

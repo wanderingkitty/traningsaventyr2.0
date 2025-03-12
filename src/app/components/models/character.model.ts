@@ -56,13 +56,6 @@ export interface CharacterStats {
   totalXpGained: number;
 }
 
-export interface SpecialAbility {
-  name: string;
-  unlockedAtLevel?: number;
-  requiredLevel?: number;
-  unlocked: boolean;
-}
-
 export interface Challenge {
   name: string;
   description: string;

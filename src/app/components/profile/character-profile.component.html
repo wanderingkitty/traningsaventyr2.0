@@ -20,7 +20,7 @@
 
     <!-- Updated level and XP information -->
     <div class="level-info" *ngIf="characterProfile.progress">
-      <p class="character-level">Level</p>
+      <p class="character-level">{{ userName }} Level</p>
       <div class="level-badge">{{ characterProfile.progress.level || 1 }}</div>
     </div>
 
@@ -110,33 +110,6 @@
 
           <span class="challenge-xp" *ngIf="challenge.xpReward">
             +{{ challenge.xpReward }} XP
-          </span>
-        </div>
-      </div>
-    </div>
-
-    <div
-      class="card abilities-card"
-      *ngIf="
-        characterProfile.characterData.specialAbilities &&
-        characterProfile.characterData.specialAbilities.length > 0
-      "
-    >
-      <h3>✨ Special Abilities</h3>
-      <div
-        *ngFor="let ability of characterProfile.characterData.specialAbilities"
-      >
-        <span class="ability-name">{{ ability.name }}</span>
-        <div class="progress-bar">
-          <div
-            class="progress-bar-inner"
-            [style.width.%]="ability.unlocked ? 100 : 0"
-          ></div>
-        </div>
-        <div class="ability-status" *ngIf="!ability.unlocked">
-          <span class="locked">LOCKED</span>
-          <span class="ability-req">
-            Unlocks at Level {{ ability.requiredLevel }}
           </span>
         </div>
       </div>
