@@ -403,3 +403,10 @@ button {
     padding: 1rem !important;
   }
 }
+
+@media screen and (max-width: 350px) {
+  .content {
+    top: 100vh; /* Уменьшаем ещё больше на маленьких экранах */
+    padding-bottom: 200px; /* Больше места снизу */
+  }
+}
