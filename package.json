@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "scripts": {
     "start": "node dist/backend/api-server.js",
-    "frontend": "ng serve",
     "start:backend": "ts-node -P tsconfig.backend.json backend/api-server.ts",
     "build": "ng build && npm run build:backend",
     "build:backend": "tsc -p tsconfig.backend.json",

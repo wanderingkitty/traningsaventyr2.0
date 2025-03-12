@@ -15,8 +15,7 @@ interface CharacterProgress {
   providedIn: 'root',
 })
 export class CharacterService {
-  // private apiUrl = '/api/profiles';
-  private apiUrl = 'http://localhost:1408/api/profiles';
+  private apiUrl = '/api/profiles';
   private baseXpRequirement = 1000;
 
   private characterSaveStatusSubject = new BehaviorSubject<{
