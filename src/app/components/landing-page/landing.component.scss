@@ -521,38 +521,3 @@ button {
     margin-bottom: 0.7em !important;
   }
 }
-
-/* Target actual iPhone 14 Pro and Pro Max */
-@media screen and (min-width: 390px) and (max-width: 430px) and (min-height: 800px) {
-  /* Force mountains lower to show full Zen Warrior card */
-  .mountains-front {
-    bottom: -15vh !important;
-    height: 25vh !important;
-  }
-
-  .mountains-mid {
-    bottom: -10vh !important;
-    height: 20vh !important;
-  }
-
-  .mountains-back {
-    bottom: -5vh !important;
-    height: 15vh !important;
-  }
-
-  /* Make sure there's enough vertical space */
-  .main-section {
-    min-height: 200vh !important;
-  }
-
-  /* Ensure cards are visible above mountains */
-  .content {
-    z-index: 8 !important; /* Must be higher than mountains and trees */
-  }
-
-  /* Adjust card spacing */
-  .cards {
-    gap: 1.2rem !important;
-    margin-bottom: 2rem !important;
-  }
-}
