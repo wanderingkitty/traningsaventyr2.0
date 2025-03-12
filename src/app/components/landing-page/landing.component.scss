@@ -469,3 +469,55 @@ button {
     opacity: 0.6 !important;
   }
 }
+
+@media screen and (min-width: 381px) and (max-width: 420px) {
+  /* Adjustments specifically for iPhone 12 Pro and similar devices */
+
+  /* Start the cards earlier to avoid overlap with "About your" section */
+  .content {
+    padding-bottom: 350px !important;
+  }
+
+  /* Increase main section height for proper scrolling */
+  .main-section {
+    min-height: 190vh !important;
+  }
+
+  /* Compact cards but less extreme than for iPhone SE */
+  .cards {
+    gap: 1rem !important;
+    margin-top: 1rem !important;
+  }
+
+  .card {
+    padding: 1.2rem !important;
+    width: 85% !important;
+  }
+
+  .card img {
+    width: 100px !important;
+    height: 100px !important;
+  }
+
+  /* Lower the mountains to free up space */
+  .mountains-front {
+    bottom: -10vh !important;
+    height: 25vh !important;
+  }
+
+  .mountains-mid {
+    bottom: -5vh !important;
+    height: 20vh !important;
+  }
+
+  .mountains-back {
+    bottom: 0vh !important;
+    height: 15vh !important;
+  }
+
+  /* Make content text slightly smaller */
+  .content h2 {
+    font-size: 1.7em !important;
+    margin-bottom: 0.7em !important;
+  }
+}
