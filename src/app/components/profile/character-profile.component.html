@@ -115,9 +115,6 @@
       </div>
     </div>
 
-    <h3>🏅 Rewards</h3>
-    <div class="rewards-container"></div>
-
     <h3>🔼 Next Level</h3>
     <div class="next-level-container">
       <div class="next-level-value">
@@ -128,13 +125,6 @@
           Collect
           <strong>{{ getRemainingExp() }}</strong>
           more XP to level up!
-        </p>
-        <p>
-          <strong
-            >Level
-            {{ (characterProfile.progress.level || 1) + 1 }} reward:</strong
-          >
-          {{ getNextLevelReward(characterProfile.progress.level || 1) }}
         </p>
       </div>
     </div>

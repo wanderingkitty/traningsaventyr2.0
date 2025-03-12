@@ -491,19 +491,6 @@ export class CharacterProfileComponent implements OnInit, OnDestroy {
     this.router.navigate(['/workout-page']);
   }
 
-  // Method to get next level reward
-  getNextLevelReward(currentLevel: number): string {
-    const rewards = [
-      'New ability: Strength Boost',
-      'Increased stamina',
-      'New ability: Endurance Master',
-      'Improved recovery',
-      'New ability: Mental Focus',
-    ];
-
-    return rewards[currentLevel % rewards.length];
-  }
-
   // Метод для ручного обновления данных с сервера
   refreshData() {
     console.log('Refreshing character data from server...');

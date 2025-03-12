@@ -22,7 +22,6 @@ export class LandingComponent implements OnInit {
   ngOnInit() {
     const currentUser = this.authService.getCurrentUser();
     this.isLoggedIn = !!currentUser;
-    this.generateStars();
 
     console.log(
       'Current user status:',
@@ -34,43 +33,6 @@ export class LandingComponent implements OnInit {
   @HostListener('window:scroll', [])
   onWindowScroll() {
     this.handleParallax();
-  }
-
-  private generateStars() {
-    const starsContainer = document.querySelector('.stars');
-    const numStars = 400;
-    const width = window.innerWidth;
-    const height = window.innerHeight;
-
-    if (starsContainer) {
-      // Очищаем контейнер
-      starsContainer.innerHTML = '';
-
-      // Создаем обычные звезды
-      for (let i = 0; i < numStars; i++) {
-        const star = document.createElementNS(
-          'http://www.w3.org/2000/svg',
-          'circle'
-        );
-
-        const x = Math.random() * width;
-        const y = Math.random() * height;
-
-        const r = Math.random() > 0.9 ? Math.random() * 3 : Math.random() * 2;
-
-        star.setAttribute('cx', x.toString());
-        star.setAttribute('cy', y.toString());
-        star.setAttribute('r', r.toString());
-        star.setAttribute('fill', 'white');
-
-        const opacity = Math.random() * 0.8 + 0.2;
-        star.setAttribute('opacity', opacity.toString());
-
-        star.setAttribute('filter', 'url(#star-glow)');
-
-        starsContainer.appendChild(star);
-      }
-    }
   }
 
   private handleParallax(): void {
@@ -128,6 +90,7 @@ export class LandingComponent implements OnInit {
       trees.style.transform = `scale(${treeScale}) translateY(${treeY}px)`;
     }
   }
+
   getStarted() {
     console.log('getStarted clicked');
     const currentUser = this.authService.getCurrentUser();
