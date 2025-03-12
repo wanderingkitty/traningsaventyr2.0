@@ -2,7 +2,7 @@
   <button class="goBack-btn" (click)="onMainScreen()">Go back</button>
 
   <div class="hero">
-    <h1>Character Creation</h1>
+    <h1 class="class-selection-title">Character Creation</h1>
     <h2>Choose Your Path</h2>
     <p class="intro">
       Select the character class that resonates with your fitness goals and
@@ -22,13 +22,12 @@
 
       <div class="character-details">
         <div class="special-abilities-section">
-          <h3>Special Abilities:</h3>
+          <h3>Achievements:</h3>
           <ul class="abilities-list">
-            <li *ngFor="let ability of selectedCharacter.specialAbilities">
+            <li
+              *ngFor="let ability of selectedCharacter.achievements.slice(0, 3)"
+            >
               {{ ability.name }}
-              <span class="unlock-level"
-                >(Unlocks at Level {{ ability.unlockedAtLevel }})</span
-              >
             </li>
           </ul>
         </div>
@@ -36,12 +35,9 @@
         <div class="challenges-section">
           <h3>Challenges:</h3>
           <ul class="challenges-list">
-            <li
-              *ngFor="let challenge of selectedCharacter.challenges.slice(0, 3)"
-            >
+            <li *ngFor="let challenge of selectedCharacter.challenges">
               <p>{{ challenge.name }}:</p>
-
-              {{ challenge.description }}
+              <p class="challange-description">{{ challenge.description }}</p>
             </li>
           </ul>
         </div>
@@ -56,7 +52,7 @@
       <div
         *ngFor="let character of characters"
         class="class-card"
-        [class.selected]="character === selectedCharacter"
+        [class.selected]="isCharacterSelected(character)"
         (click)="selectCharacter(character)"
       >
         <img

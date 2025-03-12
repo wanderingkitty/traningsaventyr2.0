@@ -31,7 +31,7 @@ export const runnerWorkouts: Workout = {
 
   challenges: [
     {
-      name: '🌪️ Fast Five Challenge',
+      name: '🌪️ Fast five challenge',
       description: 'Complete a 5km run',
       progress: 0,
       xpReward: 100,
@@ -164,7 +164,7 @@ export const ascenderWorkouts: Workout = {
 
   challenges: [
     {
-      name: '🌄 Tackle a New Climbing Route',
+      name: '🌄 Tackle a new climbing route',
       description: 'Complete a new challange route',
       progress: 0,
       xpReward: 100,
@@ -298,7 +298,7 @@ export const zenWarriorWorkouts: Workout = {
 
   challenges: [
     {
-      name: '🕊️ Quiet Mind',
+      name: '🕊️ Quiet mind',
       description:
         '48 hours without social media or digital devices, focusing on inner calmness',
       progress: 0,

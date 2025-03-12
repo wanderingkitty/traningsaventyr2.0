@@ -93,10 +93,14 @@ export class CharacterCreationComponent implements OnInit {
     }
   }
 
+  isCharacterSelected(character: Character): boolean {
+    return character.name === this.selectedCharacter.name;
+  }
+
   selectCharacter(character: Character) {
+    this.selectedCharacter = character;
     console.log('Selected character template:', character.name);
 
-    // Получим текущего пользователя
     const currentUser = this.authService.getCurrentUser();
     if (!currentUser) {
       console.error('User not logged in');

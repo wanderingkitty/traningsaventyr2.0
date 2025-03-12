@@ -1,13 +1,3 @@
-export interface SpecialAbility {
-  name: string;
-  unlockedAtLevel?: number; // Опциональное поле
-  requiredLevel?: number; // Добавлено новое свойство
-  unlocked: boolean;
-}
-
-// Общие интерфейсы для тренировок и персонажа
-// Добавьте их в отдельный файл models/common.model.ts
-
 export interface Exercise {
   name: string;
   description: string;
@@ -16,7 +6,6 @@ export interface Exercise {
   completed?: boolean;
 }
 
-// Общий интерфейс для достижений, который будет использоваться везде
 export interface Achievement {
   name: string;
   description: string;
@@ -24,7 +13,6 @@ export interface Achievement {
   completed?: boolean;
   xpReward: number;
   current?: number;
-  // Дополнительные поля из WorkoutAchievement
   progressDescription?: string;
   target?: number;
   currentValue?: number;
@@ -38,7 +26,7 @@ export interface WorkoutProgress {
 
 export interface Workout {
   exercises: Exercise[];
-  achievements: Achievement[]; // Используем общий интерфейс Achievement
+  achievements: Achievement[];
   progress: WorkoutProgress;
   challenges: Challenge[];
 }
@@ -50,7 +38,6 @@ export interface WorkoutStats {
   xpGained: number;
 }
 
-// Добавьте другие необходимые интерфейсы из модели персонажа
 export interface CharacterStats {
   totalWorkouts: number;
   totalXpGained: number;
@@ -72,9 +59,8 @@ export interface Character {
   class?: string;
   xpToNextLevel: number;
   stats?: CharacterStats;
-  achievements: Achievement[]; // Используем общий интерфейс Achievement
+  achievements: Achievement[];
   challenges: Challenge[];
-  specialAbilities: SpecialAbility[];
 }
 
 export interface CharacterProfile {

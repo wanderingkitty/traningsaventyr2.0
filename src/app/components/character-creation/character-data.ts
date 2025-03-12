@@ -74,30 +74,10 @@ export const characters: Character[] = [
 
     challenges: [
       {
-        name: '🌄 Tackle a New Climbing Route',
+        name: '🌄 Tackle a new climbing route',
         description: 'Complete a new challange route',
         progress: 0,
         xpReward: 100,
-      },
-    ],
-    specialAbilities: [
-      {
-        name: '🏔 Peak power',
-        unlockedAtLevel: 2,
-        requiredLevel: 2,
-        unlocked: false,
-      },
-      {
-        name: '🪨 Rock master',
-        unlockedAtLevel: 4,
-        requiredLevel: 4,
-        unlocked: false,
-      },
-      {
-        name: '🕷️ Spider grip',
-        unlockedAtLevel: 5,
-        requiredLevel: 5,
-        unlocked: false,
       },
     ],
   },
@@ -173,30 +153,10 @@ export const characters: Character[] = [
     ],
     challenges: [
       {
-        name: '🌪️ Fast Five Challenge',
+        name: '🌪️ Fast five challenge',
         description: 'Complete a 5km run',
         progress: 0,
         xpReward: 100,
-      },
-    ],
-    specialAbilities: [
-      {
-        name: '⚡ Speed burst',
-        unlockedAtLevel: 2,
-        requiredLevel: 2,
-        unlocked: false,
-      },
-      {
-        name: '🔋 Marathon mind',
-        unlockedAtLevel: 5,
-        requiredLevel: 5,
-        unlocked: false,
-      },
-      {
-        name: '💨 Recovery master',
-        unlockedAtLevel: 4,
-        requiredLevel: 4,
-        unlocked: false,
       },
     ],
   },
@@ -272,31 +232,11 @@ export const characters: Character[] = [
     ],
     challenges: [
       {
-        name: '🕊️ Quiet Mind',
+        name: '🕊️ Quiet mind',
         description:
           '48 hours without social media or digital devices, focusing on inner calmness',
         progress: 0,
         xpReward: 100,
-      },
-    ],
-    specialAbilities: [
-      {
-        name: '☯️ Balance sage',
-        unlockedAtLevel: 2,
-        requiredLevel: 2,
-        unlocked: false,
-      },
-      {
-        name: '🌸 Inner peace',
-        unlockedAtLevel: 3,
-        requiredLevel: 3,
-        unlocked: false,
-      },
-      {
-        name: '🌊 Breath guide',
-        unlockedAtLevel: 4,
-        requiredLevel: 4,
-        unlocked: false,
       },
     ],
   },

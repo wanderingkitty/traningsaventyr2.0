@@ -10,10 +10,14 @@
   min-height: 100vh;
 }
 
+.class-selection-title {
+  text-align: center;
+  color: #ffe068;
+}
+
 .hero {
   text-align: center;
   max-width: 800px;
-  margin-bottom: 40px;
 
   h1 {
     font-size: 2.5rem;
@@ -34,11 +38,17 @@
   }
 }
 
+.challange-description {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  padding-top: 6px;
+}
+
 /* Character Preview Section */
 .preview-section {
   width: 100%;
   max-width: 800px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 .character-preview {
@@ -48,10 +58,11 @@
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   text-align: center;
   transition: transform 0.3s ease;
+  padding: 15px;
 
   h2 {
-    font-size: 2rem;
-    margin-bottom: 15px;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
     color: rgba(255, 255, 255, 0.9);
   }
 
