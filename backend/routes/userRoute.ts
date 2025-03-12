@@ -1,9 +1,17 @@
 import express from 'express';
 import { getDb, connect } from '../data/dbConnection';
 import { Collection, ObjectId } from 'mongodb';
+
 import { validateLogin } from '../data/validation/validateLogin';
 import { generateToken } from '../data/authMiddleware';
-import { User } from '../models/User';
+
+export interface User {
+  _id: ObjectId;
+  userId: string;
+  name: string;
+  password: string;
+  class: string;
+}
 
 const userRouter = express.Router();
 

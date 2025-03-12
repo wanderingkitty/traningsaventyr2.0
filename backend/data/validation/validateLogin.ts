@@ -1,4 +1,4 @@
-import { User } from '../../models/User';
+import { User } from '../../routes/userRoute';
 import { Collection } from 'mongodb';
 
 export type UserId = string;

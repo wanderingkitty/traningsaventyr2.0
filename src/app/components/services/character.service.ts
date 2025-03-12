@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from './auth.service';
-import { Character, CharacterProfile } from 'backend/models/character';
+import { Character, CharacterProfile } from '../models/character.model';
 
 import { BehaviorSubject, Observable, catchError, of, tap } from 'rxjs';
 
@@ -15,7 +15,8 @@ interface CharacterProgress {
   providedIn: 'root',
 })
 export class CharacterService {
-  private apiUrl = '/api/profiles';
+  // private apiUrl = '/api/profiles';
+  private apiUrl = 'http://localhost:1408/api/profiles';
   private baseXpRequirement = 1000;
 
   private characterSaveStatusSubject = new BehaviorSubject<{
@@ -217,7 +218,31 @@ export class CharacterService {
     };
 
     console.log('Creating profile with data:', profileData);
-    return this.http.post(this.apiUrl, profileData);
+    return new Observable((observer) => {
+      fetch(this.apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(profileData),
+      })
+        .then((response) => {
+          console.log('Received response status:', response.status);
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          console.log('Profile created successfully with fetch:', data);
+          observer.next(data);
+          observer.complete();
+        })
+        .catch((error) => {
+          console.error('Error creating profile with fetch:', error);
+          observer.error(error);
+        });
+    });
   }
 
   // Исправленный метод updateProfile для CharacterService

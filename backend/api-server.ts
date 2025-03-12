@@ -4,14 +4,24 @@ import { connect } from './data/dbConnection';
 import { userRouter } from './routes/userRoute';
 import profileRouter from './routes/profileRoute';
 import path from 'path';
+import cors from 'cors';
 
 dotenv.config();
 
 const app = express();
-const port = Number(process.env['PORT']) || 4444;
+const port = Number(process.env['PORT']) || 1408;
 
 // Middleware
 app.use(express.json());
+
+// В api-server.ts
+app.use(
+  cors({
+    origin: 'http://localhost:4200',
+    methods: 'GET,POST,PUT,DELETE',
+    credentials: true,
+  })
+);
 
 // Статические файлы Angular
 app.use('/', express.static('dist/traningsaventyr'));

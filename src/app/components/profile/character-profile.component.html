@@ -20,10 +20,7 @@
 
     <!-- Updated level and XP information -->
     <div class="level-info" *ngIf="characterProfile.progress">
-      <p class="character-level">
-        Level {{ characterProfile.progress.level || 1 }}
-        {{ characterProfile.characterData.class || "" }}
-      </p>
+      <p class="character-level">Level</p>
       <div class="level-badge">{{ characterProfile.progress.level || 1 }}</div>
     </div>
 
