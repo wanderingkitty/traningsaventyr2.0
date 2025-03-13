@@ -533,6 +533,9 @@ h2 {
 
 /* Responsive styles */
 @media (max-width: 768px) {
+  .achievements-challanges {
+    margin-bottom: 4em;
+  }
   .workout-table {
     padding: 10px;
     gap: 10px;
@@ -577,9 +580,5 @@ h2 {
     ); /* Максимально занимает треть доступного места */
     padding: 8px 12px;
     font-size: 0.9em;
-  }
-
-  .exercises-list {
-    bottom: 10em;
   }
 }
