@@ -558,12 +558,6 @@ h2 {
     font-size: 1rem;
   }
 
-  .exercises-list {
-    padding: 15px;
-    min-height: 90px;
-    bottom: 10em;
-  }
-
   .exercises-list h2 {
     font-size: 1.1em;
   }
@@ -584,64 +578,4 @@ h2 {
     padding: 8px 12px;
     font-size: 0.9em;
   }
-}
-
-@media (max-width: 480px) {
-  .workout-table {
-    padding: 8px;
-  }
-
-  h1 {
-    font-size: 1.5rem;
-  }
-
-  h2 {
-    font-size: 1.3rem;
-  }
-
-  .workout-description {
-    font-size: 0.9rem;
-  }
-
-  .exercises-list {
-    padding: 12px;
-    min-height: 80px;
-  }
-
-  .exercises-list h2 {
-    font-size: 1em;
-  }
-
-  .notification {
-    min-width: 250px;
-    padding: 10px 15px;
-    font-size: 0.9rem;
-  }
-  .progress {
-    padding: 2px;
-  }
-}
-
-/* Исправления для маленьких экранов */
-@media (max-width: 480px) {
-  .buttons {
-    padding: 10px 5px;
-    gap: 8px;
-  }
-
-  .workout-btn {
-    padding: 8px 10px;
-    font-size: 0.85em;
-    max-width: none; /* Снимаем ограничение максимальной ширины */
-    min-width: 0;
-  }
-}
-
-/* Дополнительные стили для гарантии видимости на всех экранах */
-.workout-btn:nth-child(1),
-.workout-btn:nth-child(2),
-.workout-btn:nth-child(3) {
-  display: inline-flex !important;
-  justify-content: center;
-  align-items: center;
 }
