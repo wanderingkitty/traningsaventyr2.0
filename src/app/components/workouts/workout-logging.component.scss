@@ -5,14 +5,13 @@
   background: linear-gradient(135deg, #1e1724, #3b2d4a);
   min-height: 100vh;
   padding: 20px;
-  padding-top: 146px;
+  padding-top: 150px;
   font-family: "Fira Sans", sans-serif;
   font-weight: 400;
   color: #ffffff;
   overflow: hidden;
   position: relative; /* Добавьте это */
   top: 0;
-  padding-bottom: 150px;
 }
 
 .headers {
@@ -100,7 +99,6 @@ h2 {
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  max-height: calc(100vh - 300px);
   padding-right: 10px;
   gap: 12px;
 
@@ -259,7 +257,7 @@ h2 {
 }
 
 .progress-info {
-  position: fixed; /* Keeps it always visible */
+  position: sticky;
   bottom: 0; /* Sticks it to the bottom */
   left: 0;
   width: 100%; /* Full width */
@@ -534,11 +532,11 @@ h2 {
 /* Responsive styles */
 @media (max-width: 768px) {
   .achievements-challanges {
-    margin-bottom: 4em;
+    margin-bottom: 14em;
   }
   .workout-table {
-    padding: 10px;
     gap: 10px;
+    padding-top: 0;
   }
 
   .headers {
