@@ -357,12 +357,9 @@ button {
     align-items: center;
     margin: 10px;
 
-    /* Уменьшаем отступы между карточками на мобильных устройствах */
     gap: 1rem;
   }
   .card {
-    /* Уменьшаем размер карточек на мобильных устройствах */
-    width: 90% !important;
     padding: 1.5rem !important;
   }
 
@@ -373,11 +370,10 @@ button {
   .content {
     top: 110vh;
     padding-top: 1rem;
-    padding-bottom: 100px; /* Добавляем дополнительный отступ снизу */
+    padding-bottom: 100px;
   }
 }
 
-/* Дополнительные настройки для совсем маленьких экранов */
 @media screen and (max-width: 480px) {
   .mountains-front {
     height: 25vh;
